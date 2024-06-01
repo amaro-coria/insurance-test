@@ -5,8 +5,8 @@ services:
     image: postgres:13
     container_name: insurance_db
     environment:
-      POSTGRES_USER: your_username
-      POSTGRES_PASSWORD: your_password
+      POSTGRES_USER: insurance_username
+      POSTGRES_PASSWORD: insurance_password
       POSTGRES_DB: insurance
     volumes:
       - db_data:/var/lib/postgresql/data
@@ -20,13 +20,24 @@ services:
     environment:
       DATABASE_HOST: db
       DATABASE_PORT: 5432
-      DATABASE_USER: your_username
-      DATABASE_PASSWORD: your_password
+      DATABASE_USER: insurance_username
+      DATABASE_PASSWORD: insurance_password
       DATABASE_NAME: insurance
+    ports:
+      - "3001:3000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./insurance-frontend
+    container_name: insurance_frontend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      - api
 
 volumes:
   db_data:
