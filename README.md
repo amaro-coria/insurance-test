@@ -71,3 +71,8 @@ Pages
 * /policies: List all policies
 * /policies/create: Create a new policy
 * /policies/[id]/edit: Edit an existing policy
+
+
+Sequence diagram
+
+[README.md](README.md)
