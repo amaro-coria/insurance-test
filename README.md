@@ -76,3 +76,7 @@ Pages
 Sequence diagram
 
 [README.md](README.md)
+
+Architecture justification
+
+[justification.pdf](justification.pdf)
